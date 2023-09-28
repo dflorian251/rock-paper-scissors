@@ -11,30 +11,31 @@ function getComputerChoice(){
     return computerChoice ; 
 }
 
+
 function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase() ;
     
     if (playerSelection == "paper") { // Player selects paper
         if (computerSelection == "scissors"){
-            return "You lose! Scissors beat paper." ;
+            return "Computer wins! Scissors beat paper." ;
         }else if (computerSelection == "rock") {
-            return "You win! Paper wins rock.";
+            return "Player wins! Paper wins rock.";
         }else { 
             return "Draw!" ;
         }
     }else if (playerSelection == "rock"){ // Player selects rock
         if (computerSelection == "paper") {
-            return "You lose ! Paper wins rock." ;
+            return "Computer wins! Paper wins rock." ;
         } else if (computerSelection == "scissors") {
-            return "You win! Rock beats scissors!";
+            return "Player wins! Rock beats scissors!";
         }else { 
             return "Draw!" ;
         }
     }else if (playerSelection == "scissors") { // Player selects scissors
         if (computerSelection == "rock") {
-            return "You lose! Rock beats scissors." ;
+            return "Computer wins! Rock beats scissors." ;
         }else if (computerSelection == "paper") {
-            return "You win! Scissors beats paper." ;
+            return "Player wins! Scissors beats paper." ;
         }else { 
             return "Draw!" ;
         }
@@ -42,6 +43,36 @@ function playRound(playerSelection, computerSelection){
 }
 
 
-const playerSelection = 'rock' ; 
-const computerSelection = getComputerChoice() ;
-console.log(playRound(playerSelection, computerSelection)) ;
+function checkWinner(playerWins, computerWins) {
+    if (playerWins > computerWins) {
+        return "You win the game :)";
+    }else if(playerWins < computerWins) {
+        return "You lose the game :(" ;
+    }else {
+        return "The game was a draw" ;
+    }
+}
+
+
+
+let playerSelection ; 
+let computerSelection ;
+
+let playerWins = 0;
+let computerWins = 0 ;
+let winnerOfRound;
+while ( (playerWins < 5) && (computerWins < 5) ) {
+    playerSelection = prompt("What's your selection ?")
+    computerSelection = getComputerChoice() ;
+    winnerOfRound = playRound(playerSelection, computerSelection);
+    console.log(winnerOfRound) ;
+    if (winnerOfRound.charAt(0) == 'P'){
+        playerWins++;
+    }
+    if (winnerOfRound.charAt(1) == 'C') {
+        computerWins++;
+    }
+}
+
+console.log(checkWinner(playerWins, computerWins)) ;
+
