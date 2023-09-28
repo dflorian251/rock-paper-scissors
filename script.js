@@ -11,34 +11,37 @@ function getComputerChoice(){
     return computerChoice ; 
 }
 
-function round(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase() ;
     
     if (playerSelection == "paper") { // Player selects paper
         if (computerSelection == "scissors"){
-            console.log("You lose! Scissors beat paper.");
+            return "You lose! Scissors beat paper." ;
         }else if (computerSelection == "rock") {
-            console.log("You win! Paper wins rock.");
+            return "You win! Paper wins rock.";
         }else { 
-            console.log("Draw!")
+            return "Draw!" ;
         }
     }else if (playerSelection == "rock"){ // Player selects rock
         if (computerSelection == "paper") {
-            console.log("You lose ! Paper wins rock.");
+            return "You lose ! Paper wins rock." ;
         } else if (computerSelection == "scissors") {
-            console.log("You win! Rock beats scissors!")
+            return "You win! Rock beats scissors!";
         }else { 
-            console.log("Draw!")
+            return "Draw!" ;
         }
     }else if (playerSelection == "scissors") { // Player selects scissors
         if (computerSelection == "rock") {
-            console.log("You lose! Rock beats scissors.")
+            return "You lose! Rock beats scissors." ;
         }else if (computerSelection == "paper") {
-            console.log("You win! Scissors beats paper.")
+            return "You win! Scissors beats paper." ;
         }else { 
-            console.log("Draw!")
+            return "Draw!" ;
         }
     }
 }
 
-round("scissors", getComputerChoice())
+
+const playerSelection = 'rock' ; 
+const computerSelection = getComputerChoice() ;
+console.log(playRound(playerSelection, computerSelection)) ;
