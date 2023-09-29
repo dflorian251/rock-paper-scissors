@@ -54,25 +54,28 @@ function checkWinner(playerWins, computerWins) {
 }
 
 
-
+//Hold the selections 
 let playerSelection ; 
 let computerSelection ;
-
+//Hold the wins of each entity
 let playerWins = 0;
 let computerWins = 0 ;
+//How won the last round
 let winnerOfRound;
+
+//First to five wins game
 while ( (playerWins < 5) && (computerWins < 5) ) {
     playerSelection = prompt("What's your selection ?")
     computerSelection = getComputerChoice() ;
     winnerOfRound = playRound(playerSelection, computerSelection);
-    console.log(winnerOfRound) ;
+    //Based on the return string value, we determine how won the round
     if (winnerOfRound.charAt(0) == 'P'){
         playerWins++;
     }
-    if (winnerOfRound.charAt(1) == 'C') {
+    if (winnerOfRound.charAt(0) == 'C') {
         computerWins++;
     }
 }
 
-console.log(checkWinner(playerWins, computerWins)) ;
+alert(checkWinner(playerWins, computerWins)) ;
 
